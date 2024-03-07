@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- The coordinates of the project, typically defined by your organization or group. -->
+    <groupId>com.yourcompany.app</groupId>
+    <artifactId>your-app-name</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- The name and description for your project -->
+    <name>Your Project Name</name>
+    <description>A description of your project</description>
+
+    <!-- Your project's dependencies go here -->
+    <dependencies>
+        <!-- gRPC Netty Shaded -->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-netty-shaded</artifactId>
+            <version>1.62.2</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- gRPC Protobuf -->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-protobuf</artifactId>
+            <version>1.62.2</version>
+        </dependency>
+
+        <!-- gRPC Stub -->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-stub</artifactId>
+            <version>1.62.2</version>
+        </dependency>
+
+        <!-- Tomcat annotations-api -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>annotations-api</artifactId>
+            <version>6.0.53</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+    </dependencies>
+
+
+        <!-- ... other settings ... -->
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version> <!-- Ensure you're using a version that supports your JDK -->
+                    <configuration>
+                        <source>1.8</source> <!-- Set this to the Java version you want to use -->
+                        <target>1.8</target> <!-- Set this to the Java version you want to use -->
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>kr.motd.maven</groupId>
+                    <artifactId>os-maven-plugin</artifactId>
+                    <version>1.7.0</version>
+                    <executions>
+                        <execution>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>detect</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.xolstice.maven.plugins</groupId>
+                    <artifactId>protobuf-maven-plugin</artifactId>
+                    <version>0.6.1</version> <!-- Use the appropriate version -->
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compile</goal>
+                                <goal>test-compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                         <!--suppress UnresolvedMavenProperty -->
+                        <protocArtifact>com.google.protobuf:protoc:3.15.8:exe:${os.detected.classifier} </protocArtifact>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+
+
+    <!-- Other configurations like build, plugins, etc. -->
+
+</project>
+
